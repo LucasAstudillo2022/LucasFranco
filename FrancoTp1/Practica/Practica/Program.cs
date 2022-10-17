@@ -2,7 +2,9 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
-
+builder.Services.AddDbContext<appDBcontext>(options =>
+    options.UseSqlServer(
+        builder.Configuration["ConnectionStrings:cadenaSQLServer"]));
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
