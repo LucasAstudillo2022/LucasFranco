@@ -1,6 +1,9 @@
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddDbContext<appDBcontext>(options =>
+    options.UseSqlServer(
+        builder.Configuration["ConnectionStrings:cadenaSQLServer"]));
 builder.Services.AddRazorPages();
 
 var app = builder.Build();
